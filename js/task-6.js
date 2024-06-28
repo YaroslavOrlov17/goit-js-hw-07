@@ -15,19 +15,31 @@ const destroyButton = document.querySelector("button[data-destroy]");
 createButton.addEventListener("click", handleClickCreate);
 
 function handleClickCreate(event) {
-  const amount = input.value
-
-
+  box.innerHTML = "";
+  const amount = input.value;
+  let pxCount = 30;
 
   const createBoxes = (amount) => {
-    let i
+    let i;
 
-    const html = `<div class = "new-elem" ></div>`
-    for (i = 1; i <= amount; i += 1)
-      box.insertAdjacentHTML("beforeend", html)
-  }
-  console.log(box);
+    if (amount <= 100 && amount >= 1)
+      for (i = 1; i <= amount; i += 1) {
+        box.insertAdjacentHTML(
+          "beforeend",
+          `
+        <div style="width: ${pxCount}px; height: ${pxCount}px; background-color: ${getRandomHexColor()};"></div>
+        `
+        );
+        pxCount += 10;
+      }
+  };
 
-  createBoxes(amount)
+  createBoxes(amount);
+  input.value = "";
 }
 
+destroyButton.addEventListener("click", destroyBoxes);
+
+function destroyBoxes(event) {
+  box.innerHTML = "";
+}
