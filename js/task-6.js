@@ -12,8 +12,22 @@ const createButton = document.querySelector("button[data-create]");
 
 const destroyButton = document.querySelector("button[data-destroy]");
 
-createButton.addEventListener("click", haldleClickCreate);
+createButton.addEventListener("click", handleClickCreate);
 
-function haldleClickCreate(event) {
-  box.createElement((div.style.cssText = "width: 30px"), "height = 30px", "background-color");
+function handleClickCreate(event) {
+  const amount = input.value
+
+
+
+  const createBoxes = (amount) => {
+    let i
+
+    const html = `<div class = "new-elem" ></div>`
+    for (i = 1; i <= amount; i += 1)
+      box.insertAdjacentHTML("beforeend", html)
+  }
+  console.log(box);
+
+  createBoxes(amount)
 }
+
